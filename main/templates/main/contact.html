@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | You Aspirant</title>
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="logo">You Aspirant</a>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about/">About</a>
+            <a href="/courses/">Courses</a>
+            <a href="/#success">Success Stories</a>
+            <a href="/contact/">Contact</a>
+        </div>
+
+        <a href="#contact-form" class="nav-button">Get Started</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+
+            <span class="hero-tag">LET'S CONNECT</span>
+
+            <h1>
+                Your Next Step
+                <span>Starts With a Conversation.</span>
+            </h1>
+
+            <p class="hero-description">
+                Have questions about career guidance, skill development,
+                or learning opportunities? Send us an enquiry.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#contact-form" class="nav-button">
+                    Send an Enquiry
+                </a>
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+            <div class="visual-card">
+                <div class="visual-symbol">✉</div>
+
+                <h2>We're Here to Help</h2>
+
+                <p class="visual-description">
+                    Share your goals and questions with us.
+                    Let's explore your next steps together.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact" id="contact-form">
+
+        <span class="section-tag">CONTACT YOU ASPIRANT</span>
+
+        <h2>Tell Us About Your Goals</h2>
+
+        <p class="section-description">
+            Complete the form below to submit your enquiry.
+        </p>
+
+        <form method="POST"
+              action="{% url 'contact' %}"
+              class="contact-form"
+              id="contactForm">
+
+            {% csrf_token %}
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="interest">Area of Interest</label>
+
+                <select id="interest" name="interest" required>
+                    <option value="">Select an area</option>
+                    <option value="Python Programming">
+                        Python Programming
+                    </option>
+                    <option value="Web Development">
+                        Web Development
+                    </option>
+                    <option value="Full-Stack Development">
+                        Full-Stack Development
+                    </option>
+                    <option value="Career Preparation">
+                        Career Preparation
+                    </option>
+                    <option value="Database Fundamentals">
+                        Database Fundamentals
+                    </option>
+                    <option value="Project Development">
+                        Project Development
+                    </option>
+                    <option value="Career Guidance">
+                        Career Guidance
+                    </option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Your Message</label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Tell us how we can help you..."
+                    required></textarea>
+            </div>
+
+           {% if success %}
+    <div style="background-color: green; color: white; padding: 20px; border-radius: 10px; margin: 20px 0; text-align: center; font-weight: bold;">
+        {{ success }}
+    </div>
+     {% endif %}
+
+            <button type="submit" class="nav-button">
+                Submit Enquiry
+            </button>
+
+        </form>
+
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 You Aspirant. All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'main/script.js' %}"></script>
+
+</body>
+</html>
